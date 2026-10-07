@@ -1,0 +1,15 @@
+import { Battery, Bluetooth, CheckCircle2, Droplets, RefreshCw, Smartphone, Syringe, Thermometer, WifiOff } from "lucide-react";
+import type { DeviceSnapshot } from "../types";
+import StatusBadge from "../components/StatusBadge";
+
+export default function Device({ device, connect, disconnect, sync }: { device: DeviceSnapshot | null; connect: () => void; disconnect: () => void; sync: () => void }) {
+  const connected = device?.bluetooth === "Connected";
+  const tempOk = !!device && device.temperature >= 20 && device.temperature <= 28;
+  return <div className="page"><div className="page-head"><div><p className="eyebrow">Wearable connection</p><h1>InsuWear Device</h1><p className="muted">Prototype device monitoring and BLE integration boundary.</p></div><StatusBadge tone={connected?"good":"warning"}>{connected?"● Connected":"○ Disconnected"}</StatusBadge></div>
+    <div className="device-card card"><div className="device-hero"><div className="large-shorts"><div className="hidden-pod"><Syringe/></div></div><div><h2>InsuWear Shorts</h2><p>Removable pod + sensor system</p><div className="button-row"><button className="primary" onClick={connected?disconnect:connect}>{connected?<WifiOff/>:<Bluetooth/>}{connected?"Disconnect":"Connect Device"}</button><button className="secondary" onClick={sync} disabled={!connected}><RefreshCw/> Sync Now</button></div></div></div>
+    <div className="device-grid"><div className="device-tile"><Droplets/><span>Glucose sensor</span><b>{device?.sensorActive?"Active":"Offline"}</b></div><div className="device-tile"><Syringe/><span>Insulin pod</span><b>{device?.podActive?"Active":"Offline"}</b></div><div className="device-tile"><Bluetooth/><span>Bluetooth</span><b>{device?.bluetooth ?? "Disconnected"}</b></div><div className="device-tile"><Battery/><span>Battery</span><b>{device?.battery ?? "--"}%</b></div><div className="device-tile"><Thermometer/><span>Temperature</span><b>{device ? `${device.temperature}°C` : "--"}</b></div><div className="device-tile"><Smartphone/><span>Last sync</span><b>{device ? new Date(device.syncedAt).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"}) : "--"}</b></div></div>
+    <div className={`temperature-alert ${tempOk?"normal":""}`}><Thermometer/><div><strong>Temperature status: {device ? (tempOk?"Normal":"Warning") : "Unknown"}</strong><p>The prototype uses a configurable 20–28°C display range. The cooling-gel pocket is represented as a product concept, not a validated thermal-control system.</p></div></div>
+    </div>
+    <section className="card"><h2>BLE integration</h2><p className="muted">This demo does not claim a real hardware connection. Future firmware can expose GATT characteristics for glucose, temperature, battery, pod state and device events; the app can then replace the demo service without changing the UI.</p></section>
+  </div>;
+}

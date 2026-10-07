@@ -1,0 +1,8 @@
+import { Bell, ShieldCheck, UserRound } from "lucide-react";
+export default function Profile() {
+  return <div className="page"><div className="page-head"><div><p className="eyebrow">Account</p><h1>Profile</h1><p className="muted">Prototype user preferences.</p></div></div>
+    <div className="grid-2"><section className="card profile-card"><div className="profile-avatar">A</div><h2>Alex Johnson</h2><p className="muted">Prototype user · Age 24</p><label>Name<input defaultValue="Alex Johnson"/></label><label>Age<input type="number" defaultValue="24"/></label></section>
+    <section className="card"><h2>Preferences</h2><div className="preference"><Bell/><div><strong>Notifications</strong><span>Glucose, reminders and device alerts</span></div><input type="checkbox" defaultChecked/></div><div className="preference"><ShieldCheck/><div><strong>Safety confirmation</strong><span>Require confirmation before emergency actions</span></div><input type="checkbox" defaultChecked/></div><div className="preference"><UserRound/><div><strong>Clinical review</strong><span>Prototype reminder to verify settings with a clinician</span></div><input type="checkbox" defaultChecked/></div></section></div>
+    <section className="card"><h2>Safety disclaimer</h2><p className="muted">InsuWear is a prototype concept. It is not a substitute for professional medical advice and must not be used to determine, prescribe, or autonomously administer insulin. Any real deployment requires clinical validation, device validation, cybersecurity, privacy controls and applicable regulatory approval.</p></section>
+  </div>;
+}
