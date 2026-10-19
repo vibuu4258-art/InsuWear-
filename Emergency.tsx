@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { AlertTriangle, MapPin, Phone, Navigation, Plus, Trash2, ShieldAlert } from "lucide-react";
-import type { EmergencyContact, EmergencyEvent } from "../types";
-import { demoHospitals, requestLocation } from "../services/location";
-import Modal from "../components/Modal";
-import StatusBadge from "../components/StatusBadge";
-
+import type { EmergencyContact, EmergencyEvent } from "./types";
+import { demoHospitals, requestLocation } from "./location";
+import Modal from "./Modal";
+import StatusBadge from "./StatusBadge";
 export default function Emergency({ contacts, setContacts, events, setEvents }: { contacts: EmergencyContact[]; setContacts: (x: EmergencyContact[])=>void; events: EmergencyEvent[]; setEvents: (x: EmergencyEvent[])=>void }) {
   const [confirm, setConfirm] = useState(false);
   const [location, setLocation] = useState<string>("");

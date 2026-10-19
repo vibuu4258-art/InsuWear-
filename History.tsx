@@ -1,6 +1,6 @@
 import { Activity, Syringe, Thermometer } from "lucide-react";
-import type { DeviceSnapshot, GlucoseReading, InsulinEvent } from "../types";
-import StatusBadge from "../components/StatusBadge";
+import type { DeviceSnapshot, GlucoseReading, InsulinEvent } from "./types";
+import StatusBadge from "./StatusBadge";
 
 export default function History({ glucose, insulin, device }: { glucose: GlucoseReading[]; insulin: InsulinEvent[]; device: DeviceSnapshot | null }) {
   const rows = [

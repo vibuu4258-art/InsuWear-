@@ -1,7 +1,6 @@
 import { Battery, Bluetooth, CheckCircle2, Droplets, RefreshCw, Smartphone, Syringe, Thermometer, WifiOff } from "lucide-react";
-import type { DeviceSnapshot } from "../types";
-import StatusBadge from "../components/StatusBadge";
-
+import type { DeviceSnapshot } from "./types";
+import StatusBadge from "./StatusBadge";
 export default function Device({ device, connect, disconnect, sync }: { device: DeviceSnapshot | null; connect: () => void; disconnect: () => void; sync: () => void }) {
   const connected = device?.bluetooth === "Connected";
   const tempOk = !!device && device.temperature >= 20 && device.temperature <= 28;

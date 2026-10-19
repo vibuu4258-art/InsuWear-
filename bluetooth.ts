@@ -1,4 +1,4 @@
-import type { DeviceSnapshot } from "../types";
+import type { DeviceSnapshot } from "./types";
 
 /**
  * Prototype BLE boundary.

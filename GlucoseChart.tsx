@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
-import type { GlucoseReading } from "../types";
+import type { GlucoseReading } from "./types";
 
 export default function GlucoseChart({ data }: { data: GlucoseReading[] }) {
   const chartData = [...data]

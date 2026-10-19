@@ -1,18 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { Activity, BellRing } from "lucide-react";
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
-import Home from "./pages/Home";
-import Glucose from "./pages/Glucose";
-import Insulin from "./pages/Insulin";
-import History from "./pages/History";
-import Device from "./pages/Device";
-import Emergency from "./pages/Emergency";
-import Profile from "./pages/Profile";
-import type { DeviceSnapshot, EmergencyContact, EmergencyEvent, GlucoseReading, InsulinEvent, Reminder } from "./types";
-import { storage } from "./services/storage";
-import { connectInsuWearDemo, disconnectInsuWear } from "./services/bluetooth";
-import { makeDemoGlucose, makeDemoInsulin, nextDemoDevice } from "./services/demo";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
+import Home from "./Home";
+import Glucose from "./Glucose";
+import Insulin from "./Insulin";
+import History from "./History";
+import Device from "./Device";
+import Emergency from "./Emergency";
+import Profile from "./Profile";
+import type {
+  DeviceSnapshot,
+  EmergencyContact,
+  EmergencyEvent,
+  GlucoseReading,
+  InsulinEvent,
+  Reminder,
+} from "./types";
+import { storage } from "./storage";
+import {
+  connectInsuWearDemo,
+  disconnectInsuWear,
+} from "./bluetooth";
+import {
+  makeDemoGlucose,
+  makeDemoInsulin,
+  nextDemoDevice,
+} from "./demo";
 
 const seedGlucose: GlucoseReading[] = Array.from({length: 8}, (_, i) => {
   const now = Date.now() - (7-i)*60*60*1000;
@@ -34,7 +48,11 @@ export default function App() {
 
   useEffect(()=>storage.saveGlucose(glucose),[glucose]);
   useEffect(()=>storage.saveInsulin(insulin),[insulin]);
-  useEffect(()=>storage.saveDevice(device),[device]);
+  useEffect(() => {
+  if (device) {
+    storage.saveDevice(device);
+  }
+}, [device]);
   useEffect(()=>storage.saveReminders(reminders),[reminders]);
   useEffect(()=>storage.saveContacts(contacts),[contacts]);
   useEffect(()=>storage.saveEmergencies(emergencies),[emergencies]);

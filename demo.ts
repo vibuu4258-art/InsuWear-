@@ -1,4 +1,4 @@
-import type { DeviceSnapshot, GlucoseReading, InsulinEvent } from "../types";
+import type { DeviceSnapshot, GlucoseReading, InsulinEvent } from "./types";
 
 export function glucoseStatus(value: number): GlucoseReading["status"] {
   if (value < 70) return "Low";

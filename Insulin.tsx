@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Bell, Check, Plus, Trash2 } from "lucide-react";
-import type { InsulinEvent, Reminder } from "../types";
-
+import type { InsulinEvent, Reminder } from "./types";
+import StatusBadge from "./StatusBadge";
 export default function Insulin({ events, reminders, addEvent, setReminders }: { events: InsulinEvent[]; reminders: Reminder[]; addEvent: (e: InsulinEvent) => void; setReminders: (r: Reminder[]) => void }) {
   const [date, setDate] = useState(new Date().toISOString().slice(0,10));
   const [time, setTime] = useState("20:30");

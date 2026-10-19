@@ -1,4 +1,4 @@
-import type { DeviceSnapshot, EmergencyContact, EmergencyEvent, GlucoseReading, InsulinEvent, Reminder } from "../types";
+import type { DeviceSnapshot, EmergencyContact, EmergencyEvent, GlucoseReading, InsulinEvent, Reminder } from "./types";
 
 const keys = {
   glucose: "insuwear_glucose",

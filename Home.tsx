@@ -1,8 +1,8 @@
 import { Activity, Battery, Bluetooth, Droplets, Syringe, Thermometer, Wifi, Zap } from "lucide-react";
-import type { DeviceSnapshot, GlucoseReading, InsulinEvent, Reminder } from "../types";
-import StatusBadge from "../components/StatusBadge";
-import MetricCard from "../components/MetricCard";
-import GlucoseChart from "../components/GlucoseChart";
+import type { DeviceSnapshot, GlucoseReading, InsulinEvent, Reminder } from "./types";
+import StatusBadge from "./StatusBadge";
+import MetricCard from "./MetricCard";
+import GlucoseChart from "./GlucoseChart";
 
 export default function Home({ glucose, insulin, device, reminders, onDemo, onConnect, onPage }: {
   glucose: GlucoseReading[]; insulin: InsulinEvent[]; device: DeviceSnapshot | null; reminders: Reminder[];
